@@ -1,4 +1,4 @@
-package com.thelazybattley.common.usecase
+package com.thelazybattley.common.domain.usecase
 
 interface GetImageFromPath {
 

@@ -1,6 +1,6 @@
-package com.thelazybattley.common.usecase.impl
+package com.thelazybattley.common.domain.usecase.impl
 
-import com.thelazybattley.common.usecase.GetImageFromPath
+import com.thelazybattley.common.domain.usecase.GetImageFromPath
 import javax.inject.Inject
 
 class GetImageFromPathImpl @Inject constructor(): GetImageFromPath {

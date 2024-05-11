@@ -1,4 +1,4 @@
-package com.thelazybattley.common.base
+package com.thelazybattley.common.presentation.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

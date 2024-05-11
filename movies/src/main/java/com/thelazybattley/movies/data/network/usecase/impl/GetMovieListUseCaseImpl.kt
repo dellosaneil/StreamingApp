@@ -1,6 +1,6 @@
 package com.thelazybattley.movies.data.network.usecase.impl
 
-import com.thelazybattley.movies.data.item.movies.MovieListType
+import com.thelazybattley.movies.domain.item.movies.MovieListType
 import com.thelazybattley.movies.data.network.usecase.GetMovieListUseCase
 import com.thelazybattley.movies.data.repository.MoviesRepository
 import javax.inject.Inject

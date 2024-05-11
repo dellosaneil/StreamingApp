@@ -13,8 +13,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.thelazybattley.common.theme.LocalColors
-import com.thelazybattley.common.theme.MovieTheme
+import com.thelazybattley.common.presentation.theme.LocalColors
+import com.thelazybattley.common.presentation.theme.MovieTheme
 import com.thelazybattley.movie.R
 import com.thelazybattley.movie.presentation.dashboard.DashboardEvent
 import com.thelazybattley.movie.presentation.dashboard.DashboardUiState

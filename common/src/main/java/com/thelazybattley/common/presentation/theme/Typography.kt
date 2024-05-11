@@ -1,4 +1,4 @@
-package com.thelazybattley.common.theme
+package com.thelazybattley.common.presentation.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable

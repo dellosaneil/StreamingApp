@@ -3,6 +3,7 @@ package com.thelazybattley.common.di
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.thelazybattley.common.network.services.CommonService
 import com.thelazybattley.common.util.ApiKeyInterceptor
 import dagger.Module
 import dagger.Provides
@@ -42,4 +43,7 @@ class NetworkModule {
 
     @Provides
     fun provideApiKeyInterceptor() = ApiKeyInterceptor()
+
+    @Provides
+    fun provideCommonService(retrofit: Retrofit) = retrofit.create(CommonService::class.java)
 }

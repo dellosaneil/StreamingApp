@@ -1,6 +1,6 @@
 package com.thelazybattley.movies.data.network.response.movies
 
-import com.thelazybattley.movies.data.item.movies.Movie
+import com.thelazybattley.movies.domain.item.movies.Movie
 import kotlin.math.round
 
 data class MovieResponse(

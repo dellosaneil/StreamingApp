@@ -1,8 +1,8 @@
 package com.thelazybattley.movie.presentation.dashboard
 
 import androidx.lifecycle.viewModelScope
-import com.thelazybattley.common.base.BaseViewModel
-import com.thelazybattley.movies.data.item.movies.MovieListType
+import com.thelazybattley.common.presentation.base.BaseViewModel
+import com.thelazybattley.movies.domain.item.movies.MovieListType
 import com.thelazybattley.movies.data.network.usecase.GetMovieListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

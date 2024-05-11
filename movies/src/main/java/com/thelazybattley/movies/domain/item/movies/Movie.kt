@@ -1,4 +1,4 @@
-package com.thelazybattley.movies.data.item.movies
+package com.thelazybattley.movies.domain.item.movies
 
 data class Movie(
     val genreIds: List<Int>,

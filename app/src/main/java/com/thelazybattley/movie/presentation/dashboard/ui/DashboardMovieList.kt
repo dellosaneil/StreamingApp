@@ -26,11 +26,11 @@ import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.integration.compose.placeholder
-import com.thelazybattley.common.theme.MovieTheme
-import com.thelazybattley.common.theme.colors
-import com.thelazybattley.common.theme.textStyle
+import com.thelazybattley.common.presentation.theme.MovieTheme
+import com.thelazybattley.common.presentation.theme.colors
+import com.thelazybattley.common.presentation.theme.textStyle
 import com.thelazybattley.movie.R
-import com.thelazybattley.movies.data.item.movies.Movie
+import com.thelazybattley.movies.domain.item.movies.Movie
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable

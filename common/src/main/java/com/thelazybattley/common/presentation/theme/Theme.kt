@@ -1,4 +1,4 @@
-package com.thelazybattley.common.theme
+package com.thelazybattley.common.presentation.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme

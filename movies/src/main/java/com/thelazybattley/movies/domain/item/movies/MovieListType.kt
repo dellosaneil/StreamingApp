@@ -1,4 +1,4 @@
-package com.thelazybattley.movies.data.item.movies
+package com.thelazybattley.movies.domain.item.movies
 
 enum class MovieListType {
     POPULAR,

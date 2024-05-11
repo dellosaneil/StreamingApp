@@ -1,7 +1,7 @@
 package com.thelazybattley.movie.presentation.dashboard
 
-import com.thelazybattley.common.base.BaseUiState
-import com.thelazybattley.movies.data.item.movies.Movie
+import com.thelazybattley.common.presentation.base.BaseUiState
+import com.thelazybattley.movies.domain.item.movies.Movie
 
 data class DashboardUiState(
     val isLoading: Boolean = true,

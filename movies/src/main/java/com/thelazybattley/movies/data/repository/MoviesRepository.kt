@@ -1,7 +1,7 @@
 package com.thelazybattley.movies.data.repository
 
-import com.thelazybattley.movies.data.item.movies.MovieListType
-import com.thelazybattley.movies.data.item.movies.MoviesData
+import com.thelazybattley.movies.domain.item.movies.MovieListType
+import com.thelazybattley.movies.domain.item.movies.MoviesData
 
 interface MoviesRepository {
 

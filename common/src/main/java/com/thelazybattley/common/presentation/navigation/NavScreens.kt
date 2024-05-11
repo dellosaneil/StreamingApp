@@ -1,4 +1,4 @@
-package com.thelazybattley.common.navigation
+package com.thelazybattley.common.presentation.navigation
 
 sealed class NavScreens(
     val route: String,
