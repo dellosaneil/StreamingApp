@@ -1,4 +1,6 @@
-package com.thelazybattley.movies.data.network.response.movie
+package com.thelazybattley.movies.data.network.response.movies
+
+import com.thelazybattley.movies.data.item.movies.Movie
 
 data class MovieResponse(
     val adult: Boolean,
@@ -15,4 +17,15 @@ data class MovieResponse(
     val video: Boolean,
     val voteAverage: Double,
     val voteCount: Int
+)
+
+fun MovieResponse.toData() = Movie(
+    genreIds = genreIds,
+    id = id,
+    overview = overview,
+    popularity = popularity,
+    posterImage = posterPath,
+    releaseDate = releaseDate,
+    title = title,
+    voteAverage = voteAverage
 )

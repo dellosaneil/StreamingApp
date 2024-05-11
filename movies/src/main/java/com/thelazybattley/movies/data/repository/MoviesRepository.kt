@@ -1,8 +1,8 @@
 package com.thelazybattley.movies.data.repository
 
-import com.thelazybattley.movies.data.network.response.nowplaying.NowPlayingDataResponse
+import com.thelazybattley.movies.data.item.movies.MoviesData
 
 interface MoviesRepository {
 
-    suspend fun getNowPlaying(): Result<NowPlayingDataResponse>
+    suspend fun getNowPlaying(): Result<MoviesData>
 }

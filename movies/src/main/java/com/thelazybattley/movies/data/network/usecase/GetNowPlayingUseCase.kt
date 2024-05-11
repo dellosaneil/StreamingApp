@@ -1,9 +1,9 @@
 package com.thelazybattley.movies.data.network.usecase
 
-import com.thelazybattley.movies.data.network.response.nowplaying.NowPlayingDataResponse
+import com.thelazybattley.movies.data.item.movies.MoviesData
 
 interface GetNowPlayingUseCase {
 
-    suspend operator fun invoke() : Result<NowPlayingDataResponse>
+    suspend operator fun invoke() : Result<MoviesData>
 
 }

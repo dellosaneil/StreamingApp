@@ -1,5 +1,8 @@
 package com.thelazybattley.common.di
 
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.thelazybattley.common.util.ApiKeyInterceptor
 import dagger.Module
 import dagger.Provides
@@ -26,10 +29,13 @@ class NetworkModule {
             .addInterceptor(interceptor)
             .addInterceptor(apiKeyInterceptor)
             .build()
+        val gson: Gson = GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .create()
 
         return Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()
     }
