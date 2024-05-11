@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
-import com.thelazybattley.movie.ui.theme.MovieTheme
+import com.thelazybattley.common.theme.MovieTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
