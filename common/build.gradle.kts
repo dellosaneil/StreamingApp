@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
     implementation(libs.navigation)
+    implementation(libs.androidx.ui.text.google.fonts)
 }
 
 kapt {

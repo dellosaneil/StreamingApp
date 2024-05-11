@@ -24,11 +24,13 @@ fun MovieTheme(
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
-    
-    CompositionLocalProvider(value = LocalColors provides lightColors) {
+
+    CompositionLocalProvider(
+        LocalColors provides lightColors,
+        LocalTypography provides StreamingTypography()
+    ) {
         MaterialTheme(
             colorScheme = colorScheme,
-            typography = Typography,
             content = content
         )
     }

@@ -3,24 +3,19 @@ package com.thelazybattley.movie.presentation.dashboard.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
 import com.thelazybattley.common.theme.LocalColors
 import com.thelazybattley.common.theme.MovieTheme
+import com.thelazybattley.movie.R
 import com.thelazybattley.movie.presentation.dashboard.DashboardEvent
 import com.thelazybattley.movie.presentation.dashboard.DashboardUiState
 import com.thelazybattley.movie.presentation.dashboard.DashboardViewModel
@@ -51,17 +46,10 @@ fun DashboardScreen(
         contentPadding = PaddingValues(start = 16.dp)
     ) {
         item {
-            LazyRow(modifier = Modifier.fillMaxWidth()) {
-                items(items = uiState.nowPlayingMovies, key = { it.id }) { movie ->
-                    GlideImage(
-                        model = movie.posterImage,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(all = 4.dp)
-                            .clip(shape = RoundedCornerShape(size = 12.dp))
-                    )
-                }
-            }
+            DashboardMovieList(
+                movies = uiState.nowPlayingMovies,
+                groupName = stringResource(R.string.now_showing)
+            )
         }
     }
 }

@@ -15,7 +15,7 @@ class DashboardViewModel @Inject constructor(
 
     override fun initialState() = DashboardUiState()
 
-    init{
+    init {
         fetchData()
     }
 
@@ -26,7 +26,7 @@ class DashboardViewModel @Inject constructor(
                     onSuccess = { data ->
                         updateState { state ->
                             state.copy(
-                                nowPlayingMovies = data.results
+                                nowPlayingMovies = data.results.take(n = 10)
                             )
                         }
                     },

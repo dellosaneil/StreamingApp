@@ -16,6 +16,7 @@ gson = "2.10.1"
 retrofit-gson = "2.11.0"
 okhttp-bom = "4.12.0"
 runtime = "1.6.7"
+ui-text-google-fonts = "1.6.7"
 
 
 [libraries]
@@ -42,6 +43,7 @@ gson = {group ="com.google.code.gson", name = "gson", version.ref = "gson"}
 retrofit-gson = {group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit-gson"}
 logging-interceptor = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp-bom"}
 okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp-bom"}
+androidx-ui-text-google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "ui-text-google-fonts" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

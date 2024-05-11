@@ -1,6 +1,7 @@
 package com.thelazybattley.movies.data.network.response.movies
 
 import com.thelazybattley.movies.data.item.movies.Movie
+import kotlin.math.round
 
 data class MovieResponse(
     val adult: Boolean,
@@ -27,5 +28,5 @@ fun MovieResponse.toData() = Movie(
     posterImage = posterPath,
     releaseDate = releaseDate,
     title = title,
-    voteAverage = voteAverage
+    voteAverage = round(voteAverage * 10) / 10
 )
