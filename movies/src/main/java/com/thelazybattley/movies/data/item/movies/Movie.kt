@@ -8,5 +8,6 @@ data class Movie(
     val posterImage: String,
     val releaseDate: String,
     val title: String,
-    val voteAverage: Double
+    val voteAverage: Double,
+    val backdropImage: String
 )

@@ -13,10 +13,6 @@ class MoviesRepositoryImpl @Inject constructor(
     private val getImageFromPath: GetImageFromPath
 ) : MoviesRepository {
 
-    companion object {
-        private const val POSTER_WIDTH = 400
-    }
-
     override suspend fun getMovieList(type: MovieListType) = runCatching {
         val response = when (type) {
             MovieListType.POPULAR -> moviesService
@@ -37,8 +33,10 @@ class MoviesRepositoryImpl @Inject constructor(
                 .map { item ->
                     item.toData().copy(
                         posterImage = getImageFromPath(
-                            path = item.posterPath,
-                            width = POSTER_WIDTH
+                            path = item.posterPath
+                        ),
+                        backdropImage = getImageFromPath(
+                            path = item.backdropPath ?: ""
                         )
                     )
                 }

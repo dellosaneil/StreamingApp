@@ -72,6 +72,7 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.glide.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.constraintlayout.compose)
 }
 
 kapt {

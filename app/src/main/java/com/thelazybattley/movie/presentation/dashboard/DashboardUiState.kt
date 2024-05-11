@@ -5,6 +5,7 @@ import com.thelazybattley.movies.data.item.movies.Movie
 
 data class DashboardUiState(
     val isLoading: Boolean = true,
+    val highlightedMovie: Movie? = null,
     val nowShowingMovies: List<Movie> = emptyList(),
     val popularMovies: List<Movie> = emptyList(),
     val topRatedMovies: List<Movie> = emptyList(),

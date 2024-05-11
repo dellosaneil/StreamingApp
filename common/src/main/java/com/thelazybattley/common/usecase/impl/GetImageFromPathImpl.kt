@@ -6,8 +6,8 @@ import javax.inject.Inject
 class GetImageFromPathImpl @Inject constructor(): GetImageFromPath {
 
     companion object {
-        const val BASE_PATH = "https://image.tmdb.org/t/p/"
+        const val BASE_PATH = "https://image.tmdb.org/t/p/original/"
     }
 
-    override fun invoke(path: String, width: Int) = BASE_PATH + "w$width$path"
+    override fun invoke(path: String): String = BASE_PATH + path
 }

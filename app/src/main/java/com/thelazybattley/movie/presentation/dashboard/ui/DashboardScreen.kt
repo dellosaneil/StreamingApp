@@ -43,6 +43,17 @@ fun DashboardScreen(
             .fillMaxSize()
             .background(color = LocalColors.current.white1)
     ) {
+        if (uiState.highlightedMovie != null) {
+            item {
+                DashboardHighlightedMovie(
+                    modifier = modifier,
+                    movie = uiState.highlightedMovie
+                )
+            }
+        }
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
         item {
             DashboardMovieList(
                 movies = uiState.nowShowingMovies,

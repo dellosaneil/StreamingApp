@@ -44,7 +44,8 @@ class DashboardViewModel @Inject constructor(
                                     )
 
                                     MovieListType.TRENDING -> state.copy(
-                                        trendingMovies = results
+                                        trendingMovies = results,
+                                        highlightedMovie = results.first()
                                     )
                                 }
                             }

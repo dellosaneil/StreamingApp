@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
@@ -82,6 +83,7 @@ fun DashboardMovieList(
                         model = movie.posterImage,
                         contentDescription = null,
                         modifier = Modifier
+                            .height(250.dp)
                             .padding(all = 4.dp)
                             .clip(shape = RoundedCornerShape(size = 12.dp)),
                         loading = placeholder(R.drawable.ic_launcher_background)
@@ -123,7 +125,8 @@ private fun PreviewDashboardMovieList() {
                     posterImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
                     releaseDate = "",
                     title = "Monkey",
-                    voteAverage = 3.2
+                    voteAverage = 3.2,
+                    backdropImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
                 ),
                 Movie(
                     genreIds = listOf(1),
@@ -133,7 +136,8 @@ private fun PreviewDashboardMovieList() {
                     posterImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
                     releaseDate = "",
                     title = "Monkey",
-                    voteAverage = 3.2
+                    voteAverage = 3.2,
+                    backdropImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
                 ),
                 Movie(
                     genreIds = listOf(1),
@@ -143,7 +147,8 @@ private fun PreviewDashboardMovieList() {
                     posterImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
                     releaseDate = "",
                     title = "Monkey",
-                    voteAverage = 3.2
+                    voteAverage = 3.2,
+                    backdropImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
                 )
             )
         )

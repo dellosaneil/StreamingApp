@@ -5,7 +5,7 @@ import kotlin.math.round
 
 data class MovieResponse(
     val adult: Boolean,
-    val backdropPath: String,
+    val backdropPath: String?,
     val genreIds: List<Int>,
     val id: Int,
     val originalLanguage: String,
@@ -28,5 +28,6 @@ fun MovieResponse.toData() = Movie(
     posterImage = posterPath,
     releaseDate = releaseDate,
     title = title,
-    voteAverage = round(voteAverage * 10) / 10
+    voteAverage = round(voteAverage * 10) / 10,
+    backdropImage = backdropPath ?: ""
 )
