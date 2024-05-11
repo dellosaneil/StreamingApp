@@ -9,4 +9,5 @@ data class DashboardUiState(
     val popularMovies: List<Movie> = emptyList(),
     val topRatedMovies: List<Movie> = emptyList(),
     val upcomingMovies: List<Movie> = emptyList(),
-    ) : BaseUiState
+    val trendingMovies: List<Movie> = emptyList()
+) : BaseUiState

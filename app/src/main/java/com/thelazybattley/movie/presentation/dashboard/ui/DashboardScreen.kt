@@ -13,7 +13,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.thelazybattley.common.theme.LocalColors
 import com.thelazybattley.common.theme.MovieTheme
 import com.thelazybattley.movie.R
@@ -33,7 +32,6 @@ fun DashboardScreen(modifier: Modifier = Modifier) {
     )
 }
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun DashboardScreen(
     modifier: Modifier = Modifier,
@@ -82,6 +80,17 @@ fun DashboardScreen(
             DashboardMovieList(
                 movies = uiState.topRatedMovies,
                 groupName = stringResource(R.string.top_rated_movies)
+            )
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        item {
+            DashboardMovieList(
+                movies = uiState.trendingMovies,
+                groupName = stringResource(R.string.trending_movies)
             )
         }
     }

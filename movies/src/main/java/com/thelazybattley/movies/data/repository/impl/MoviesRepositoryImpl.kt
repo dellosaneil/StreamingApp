@@ -27,6 +27,8 @@ class MoviesRepositoryImpl @Inject constructor(
                 .getNowPlayingMovies()
             MovieListType.UPCOMING -> moviesService
                 .getUpcomingMovies()
+            MovieListType.TRENDING -> moviesService
+                .getTrendingMovies()
         }
 
         MoviesData(

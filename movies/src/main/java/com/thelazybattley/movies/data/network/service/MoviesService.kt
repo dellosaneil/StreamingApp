@@ -16,4 +16,7 @@ interface MoviesService {
 
     @GET("movie/upcoming")
     suspend fun getTopRatedMovies() : MoviesDataResponse
+
+    @GET("trending/movie/week")
+    suspend fun getTrendingMovies() : MoviesDataResponse
 }
