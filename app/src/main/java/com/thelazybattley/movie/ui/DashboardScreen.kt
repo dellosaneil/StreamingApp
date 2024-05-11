@@ -1,4 +1,4 @@
-package com.thelazybattley.dashboard.ui
+package com.thelazybattley.movie.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.thelazybattley.common.theme.LocalColors
 import com.thelazybattley.common.theme.MovieTheme
+
 
 @Composable
 fun DashboardScreen(modifier: Modifier = Modifier) {

@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.thelazybattley.common.navigation.NavScreens
-import com.thelazybattley.dashboard.ui.DashboardScreen
+import com.thelazybattley.movie.ui.DashboardScreen
 
 @Composable
 fun MyNavHost(
