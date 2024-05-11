@@ -1,7 +1,7 @@
 package com.thelazybattley.movies.di
 
-import com.thelazybattley.movies.data.network.usecase.GetNowPlayingUseCase
-import com.thelazybattley.movies.data.network.usecase.impl.GetNowPlayingUseCaseImpl
+import com.thelazybattley.movies.data.network.usecase.GetMovieListUseCase
+import com.thelazybattley.movies.data.network.usecase.impl.GetMovieListUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,5 +13,5 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class UseCaseModule {
 
     @Binds
-    abstract fun bindsGetNowPlayingUseCase(impl: GetNowPlayingUseCaseImpl): GetNowPlayingUseCase
+    abstract fun bindsGetNowPlayingUseCase(impl: GetMovieListUseCaseImpl): GetMovieListUseCase
 }

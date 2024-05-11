@@ -2,7 +2,9 @@ package com.thelazybattley.movie.presentation.dashboard.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -47,8 +49,41 @@ fun DashboardScreen(
     ) {
         item {
             DashboardMovieList(
-                movies = uiState.nowPlayingMovies,
+                movies = uiState.nowShowingMovies,
                 groupName = stringResource(R.string.now_showing)
+            )
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        item {
+            DashboardMovieList(
+                movies = uiState.upcomingMovies,
+                groupName = stringResource(R.string.upcoming_movies)
+            )
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        item {
+            DashboardMovieList(
+                movies = uiState.popularMovies,
+                groupName = stringResource(R.string.popular_movies)
+            )
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        item {
+            DashboardMovieList(
+                movies = uiState.topRatedMovies,
+                groupName = stringResource(R.string.top_rated_movies)
             )
         }
     }
