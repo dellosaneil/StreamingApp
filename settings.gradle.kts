@@ -23,4 +23,3 @@ rootProject.name = "Movie"
 include(":app")
 include(":movies")
 include(":common")
-include(":dashboard")
