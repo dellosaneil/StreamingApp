@@ -1,7 +1,6 @@
 package com.thelazybattley.movie.presentation.dashboard.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -44,8 +43,7 @@ fun DashboardScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(color = LocalColors.current.white1),
-        contentPadding = PaddingValues(start = 16.dp)
+            .background(color = LocalColors.current.white1)
     ) {
         item {
             DashboardMovieList(
