@@ -19,7 +19,6 @@ import com.bumptech.glide.integration.compose.placeholder
 import com.thelazybattley.common.presentation.theme.MovieTheme
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
-import com.thelazybattley.movie.R
 import com.thelazybattley.movies.domain.item.movies.Movie
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -43,7 +42,7 @@ fun DashboardHighlightedMovie(
                     linkTo(top = parent.top, bottom = parent.bottom)
                     height = Dimension.fillToConstraints
                 },
-            loading = placeholder(R.drawable.ic_launcher_background),
+            loading = placeholder(com.thelazybattley.common.R.drawable.image_loading_transparent),
             contentScale = ContentScale.FillHeight
         )
         Text(

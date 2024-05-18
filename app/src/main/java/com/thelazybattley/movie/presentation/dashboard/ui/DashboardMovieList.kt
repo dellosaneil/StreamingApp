@@ -84,9 +84,10 @@ fun DashboardMovieList(
                         contentDescription = null,
                         modifier = Modifier
                             .height(250.dp)
+                            .fillMaxWidth()
                             .padding(all = 4.dp)
                             .clip(shape = RoundedCornerShape(size = 12.dp)),
-                        loading = placeholder(R.drawable.ic_launcher_background)
+                        loading = placeholder(com.thelazybattley.common.R.drawable.image_loading_transparent)
                     )
                     Box(
                         modifier = Modifier

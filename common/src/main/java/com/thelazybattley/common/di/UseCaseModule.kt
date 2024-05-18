@@ -1,8 +1,8 @@
 package com.thelazybattley.common.di
 
-import com.thelazybattley.common.domain.usecase.GetGenreList
+import com.thelazybattley.common.domain.usecase.GetGenreListUseCase
 import com.thelazybattley.common.domain.usecase.GetImageFromPath
-import com.thelazybattley.common.domain.usecase.impl.GetGenreListImpl
+import com.thelazybattley.common.domain.usecase.impl.GetGenreListUseCaseImpl
 import com.thelazybattley.common.domain.usecase.impl.GetImageFromPathImpl
 import dagger.Binds
 import dagger.Module
@@ -17,5 +17,5 @@ abstract class UseCaseModule {
     abstract fun bindsGetImageFromPath(impl: GetImageFromPathImpl) : GetImageFromPath
 
     @Binds
-    abstract fun bindsGetGenreList(impl: GetGenreListImpl) : GetGenreList
+    abstract fun bindsGetGenreList(impl: GetGenreListUseCaseImpl) : GetGenreListUseCase
 }
