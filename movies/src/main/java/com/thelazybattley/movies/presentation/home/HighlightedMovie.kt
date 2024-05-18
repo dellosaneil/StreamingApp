@@ -1,4 +1,4 @@
-package com.thelazybattley.movie.presentation.dashboard.ui.home
+package com.thelazybattley.movies.presentation.home
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,7 +21,7 @@ import com.bumptech.glide.integration.compose.placeholder
 import com.thelazybattley.common.presentation.theme.MovieTheme
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
-import com.thelazybattley.common.presentation.util.toReadableString
+import com.thelazybattley.common.util.toReadableString
 import com.thelazybattley.movies.domain.item.movies.Movie
 
 @OptIn(ExperimentalGlideComposeApi::class)

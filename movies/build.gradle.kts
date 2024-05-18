@@ -60,11 +60,14 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.gson)
     implementation(libs.retrofit.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
     implementation(libs.timber)
+    implementation(libs.glide.compose)
+    implementation(libs.constraintlayout.compose)
 }
 
 kapt {

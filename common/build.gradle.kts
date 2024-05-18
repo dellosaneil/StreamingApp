@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.room.ktx)
 
     implementation(libs.timber)
+    implementation(libs.glide.compose)
 }
 
 kapt {

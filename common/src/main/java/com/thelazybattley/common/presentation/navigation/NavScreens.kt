@@ -7,10 +7,21 @@ sealed class NavScreens(
 
     companion object {
         private const val ID_PARAM = "id"
+        const val TYPE = "type"
     }
 
     data object Dashboard : NavScreens(route = "dashboard")
 
-    data class MovieDetails(val id: Int) : NavScreens(route = "movieDetails", routeWithArgs = "movieDetails/{$ID_PARAM}")
+    data object MovieDetails : NavScreens(
+        route = "movieDetails",
+        routeWithArgs = "movieDetails/{$ID_PARAM}"
+    )
+
+    data object SeeAll : NavScreens(
+        route = "seeAll",
+        routeWithArgs = "seeAll/{$TYPE}"
+    ) {
+        fun args(type: String) = "seeAll/{$type}"
+    }
 
 }

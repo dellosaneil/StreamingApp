@@ -1,3 +1,3 @@
-package com.thelazybattley.common.presentation.util
+package com.thelazybattley.common.util
 
 fun List<String>.toReadableString() = joinToString(", ")

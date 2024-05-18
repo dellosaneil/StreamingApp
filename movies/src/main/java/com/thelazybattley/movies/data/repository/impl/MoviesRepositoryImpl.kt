@@ -4,7 +4,7 @@ import com.thelazybattley.common.domain.usecase.GetImageFromPath
 import com.thelazybattley.movies.data.network.response.movies.toData
 import com.thelazybattley.movies.data.network.service.MoviesService
 import com.thelazybattley.movies.data.repository.MoviesRepository
-import com.thelazybattley.movies.domain.item.movies.MovieListType
+import com.thelazybattley.movies.domain.item.movies.MovieGroupType
 import com.thelazybattley.movies.domain.item.movies.MoviesData
 import javax.inject.Inject
 
@@ -13,21 +13,21 @@ class MoviesRepositoryImpl @Inject constructor(
     private val getImageFromPath: GetImageFromPath
 ) : MoviesRepository {
 
-    override suspend fun getMovieList(type: MovieListType) = runCatching {
+    override suspend fun getMovieList(type: MovieGroupType) = runCatching {
         val response = when (type) {
-            MovieListType.POPULAR -> moviesService
+            MovieGroupType.POPULAR -> moviesService
                 .getPopularMovies()
 
-            MovieListType.TOP_RATED -> moviesService
+            MovieGroupType.TOP_RATED -> moviesService
                 .getTopRatedMovies()
 
-            MovieListType.NOW_SHOWING -> moviesService
+            MovieGroupType.NOW_SHOWING -> moviesService
                 .getNowPlayingMovies()
 
-            MovieListType.UPCOMING -> moviesService
+            MovieGroupType.UPCOMING -> moviesService
                 .getUpcomingMovies()
 
-            MovieListType.TRENDING -> moviesService
+            MovieGroupType.TRENDING -> moviesService
                 .getTrendingMovies()
         }
 

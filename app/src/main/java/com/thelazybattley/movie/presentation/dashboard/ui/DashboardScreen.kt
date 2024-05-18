@@ -20,13 +20,19 @@ import com.thelazybattley.movie.presentation.dashboard.ui.home.DashboardMoviesSc
 
 
 @Composable
-fun DashboardScreen(modifier: Modifier = Modifier) {
+fun DashboardScreen(
+    modifier: Modifier = Modifier,
+    onNavigate: (String) -> Unit
+) {
     val viewModel = hiltViewModel<DashboardViewModel>()
     val uiState by viewModel.state.collectAsState()
     val events by viewModel.events.collectAsState(initial = null)
 
     DashboardScreen(
-        modifier = modifier, uiState = uiState, event = events
+        modifier = modifier, uiState = uiState, event = events,
+        onNavigate = { route ->
+            onNavigate(route)
+        }
     )
 }
 
@@ -34,7 +40,8 @@ fun DashboardScreen(modifier: Modifier = Modifier) {
 fun DashboardScreen(
     modifier: Modifier = Modifier,
     uiState: DashboardUiState,
-    event: DashboardEvent?
+    event: DashboardEvent?,
+    onNavigate: (String) -> Unit
 ) {
     val navController = rememberNavController()
     Scaffold(
@@ -48,7 +55,11 @@ fun DashboardScreen(
             startDestination = DashboardScreens.Home.route,
             modifier = Modifier.padding(paddingValues)
         ) {
-            composable(DashboardScreens.Home.route) { DashboardMoviesScreen(uiState = uiState) }
+            composable(DashboardScreens.Home.route) {
+                DashboardMoviesScreen(uiState = uiState) { route ->
+                    onNavigate(route)
+                }
+            }
             composable(DashboardScreens.Favorites.route) { Text("Favorite") }
             composable(DashboardScreens.Search.route) { Text("Search") }
         }
@@ -65,6 +76,8 @@ private fun PreviewDashboard() {
 
             ),
             event = null
-        )
+        ) {
+
+        }
     }
 }

@@ -1,14 +1,11 @@
-package com.thelazybattley.movie.presentation.dashboard.ui.home
+package com.thelazybattley.movies.presentation.home
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -23,21 +20,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
-import com.bumptech.glide.integration.compose.placeholder
 import com.thelazybattley.common.presentation.theme.MovieTheme
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
-import com.thelazybattley.movie.R
+import com.thelazybattley.movie.presentation.dashboard.ui.home.MoviePoster
+import com.thelazybattley.movies.R
 import com.thelazybattley.movies.domain.item.movies.Movie
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun DashboardMovieList(
     modifier: Modifier = Modifier,
     movies: List<Movie>,
-    groupName: String
+    groupName: String,
+    onNavigate: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -69,7 +64,14 @@ fun DashboardMovieList(
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 14.sp
                 ),
-                modifier = Modifier.padding(end = 16.dp)
+                modifier = Modifier
+                    .padding(end = 16.dp)
+                    .clip(shape = RoundedCornerShape(size = 8.dp))
+                    .clickable {
+                        onNavigate()
+                    }
+                    .padding(all = 4.dp)
+
             )
         }
 
@@ -78,34 +80,11 @@ fun DashboardMovieList(
             contentPadding = PaddingValues(start = 16.dp)
         ) {
             items(items = movies, key = { it.id }) { movie ->
-                Box {
-                    GlideImage(
-                        model = movie.posterImage,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .height(250.dp)
-                            .fillMaxWidth()
-                            .padding(all = 4.dp)
-                            .clip(shape = RoundedCornerShape(size = 12.dp)),
-                        loading = placeholder(com.thelazybattley.common.R.drawable.image_loading_transparent)
-                    )
-                    Box(
-                        modifier = Modifier
-                            .offset(x = 16.dp, y = 16.dp)
-                            .clip(shape = RoundedCornerShape(size = 6.dp))
-                            .background(color = colors.red1)
-                            .padding(all = 4.dp)
-                    ) {
-                        Text(
-                            text = movie.voteAverage.toString(),
-                            style = textStyle.urbanist.copy(
-                                color = colors.white1,
-                                fontSize = 10.sp,
-                                fontWeight = FontWeight.SemiBold
-                            )
-                        )
-                    }
-                }
+                MoviePoster(
+                    modifier = Modifier,
+                    posterImage = movie.posterImage,
+                    voteAverage = movie.voteAverage
+                )
             }
         }
     }
@@ -155,6 +134,8 @@ private fun PreviewDashboardMovieList() {
                     genres = emptyList()
                 )
             )
-        )
+        ) {
+
+        }
     }
 }
