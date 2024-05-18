@@ -21,7 +21,7 @@ sealed class NavScreens(
         route = "seeAll",
         routeWithArgs = "seeAll/{$TYPE}"
     ) {
-        fun args(type: String) = "seeAll/{$type}"
+        fun args(type: String) = "seeAll/$type"
     }
 
 }
