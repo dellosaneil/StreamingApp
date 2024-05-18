@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.thelazybattley.common.presentation.theme.MovieTheme
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
-import com.thelazybattley.movie.presentation.dashboard.ui.home.MoviePoster
+import com.thelazybattley.common.presentation.util.MoviePoster
 import com.thelazybattley.movies.R
 import com.thelazybattley.movies.domain.item.movies.Movie
 

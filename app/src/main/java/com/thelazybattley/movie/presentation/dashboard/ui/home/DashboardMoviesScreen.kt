@@ -11,11 +11,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.thelazybattley.common.presentation.navigation.NavScreens
 import com.thelazybattley.common.presentation.theme.LocalColors
-import com.thelazybattley.movie.R
 import com.thelazybattley.movie.presentation.dashboard.DashboardUiState
 import com.thelazybattley.movies.domain.item.movies.MovieGroupType
 import com.thelazybattley.movies.presentation.home.DashboardHighlightedMovie
 import com.thelazybattley.movies.presentation.home.DashboardMovieList
+import com.thelazybattley.movies.presentation.util.text
 
 @Composable
 fun DashboardMoviesScreen(
@@ -42,7 +42,7 @@ fun DashboardMoviesScreen(
         item {
             DashboardMovieList(
                 movies = uiState.nowShowingMovies,
-                groupName = stringResource(R.string.now_showing)
+                groupName = stringResource(id = MovieGroupType.NOW_SHOWING.text)
             ) {
                 onNavigate(NavScreens.SeeAll.args(type = MovieGroupType.NOW_SHOWING.name))
             }
@@ -55,7 +55,7 @@ fun DashboardMoviesScreen(
         item {
             DashboardMovieList(
                 movies = uiState.upcomingMovies,
-                groupName = stringResource(R.string.upcoming_movies)
+                groupName = stringResource(id = MovieGroupType.UPCOMING.text)
             ) {
                 onNavigate(NavScreens.SeeAll.args(type = MovieGroupType.UPCOMING.name))
             }
@@ -68,7 +68,7 @@ fun DashboardMoviesScreen(
         item {
             DashboardMovieList(
                 movies = uiState.popularMovies,
-                groupName = stringResource(R.string.popular_movies)
+                groupName = stringResource(id = MovieGroupType.POPULAR.text)
             ) {
                 onNavigate(NavScreens.SeeAll.args(type = MovieGroupType.POPULAR.name))
             }
@@ -81,7 +81,7 @@ fun DashboardMoviesScreen(
         item {
             DashboardMovieList(
                 movies = uiState.topRatedMovies,
-                groupName = stringResource(R.string.top_rated_movies)
+                groupName = stringResource(id = MovieGroupType.TOP_RATED.text)
             ) {
                 onNavigate(NavScreens.SeeAll.args(type = MovieGroupType.TOP_RATED.name))
             }
@@ -94,7 +94,7 @@ fun DashboardMoviesScreen(
         item {
             DashboardMovieList(
                 movies = uiState.trendingMovies,
-                groupName = stringResource(R.string.trending_movies)
+                groupName = stringResource(id = MovieGroupType.TRENDING.text)
             ) {
                 onNavigate(NavScreens.SeeAll.args(type = MovieGroupType.TRENDING.name))
             }

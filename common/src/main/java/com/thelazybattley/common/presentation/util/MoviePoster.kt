@@ -1,8 +1,7 @@
-package com.thelazybattley.movie.presentation.dashboard.ui.home
+package com.thelazybattley.common.presentation.util
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -33,10 +32,9 @@ fun MoviePoster(
             model = posterImage,
             contentDescription = null,
             modifier = Modifier
-                .height(250.dp)
-                .fillMaxWidth()
                 .padding(all = 4.dp)
-                .clip(shape = RoundedCornerShape(size = 12.dp)),
+                .clip(shape = RoundedCornerShape(size = 12.dp))
+                .height(height = 256.dp),
             loading = placeholder(R.drawable.image_loading_transparent)
         )
         Box(

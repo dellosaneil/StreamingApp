@@ -17,12 +17,14 @@ fun MyNavHost(
         navController = navHostController
     ) {
         composable(route = NavScreens.Dashboard.route) {
-            DashboardScreen {
-                navHostController.navigate(it)
+            DashboardScreen { route ->
+                navHostController.navigate(route)
             }
         }
         composable(route = NavScreens.SeeAll.routeWithArgs) {
-            SeeAllScreen()
+            SeeAllScreen {
+                navHostController.popBackStack()
+            }
         }
     }
 

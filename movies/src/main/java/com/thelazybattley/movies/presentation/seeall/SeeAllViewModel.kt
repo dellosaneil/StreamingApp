@@ -37,9 +37,13 @@ class SeeAllViewModel @Inject constructor(
 
     private fun getInitialMovies() {
         viewModelScope.launch(context = Dispatchers.IO) {
-            getMovieListUseCase(state.value.movieGroupType!!).fold(
-                onSuccess = {
-
+            getMovieListUseCase(type.toMovieGroupType).fold(
+                onSuccess = { moviesData ->
+                    updateState { state ->
+                        state.copy(
+                            movies = moviesData.results
+                        )
+                    }
                 },
                 onFailure = {
 
@@ -47,5 +51,4 @@ class SeeAllViewModel @Inject constructor(
             )
         }
     }
-
 }
