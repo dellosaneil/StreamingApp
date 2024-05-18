@@ -19,6 +19,7 @@ import com.bumptech.glide.integration.compose.placeholder
 import com.thelazybattley.common.presentation.theme.MovieTheme
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
+import com.thelazybattley.common.presentation.util.toReadableString
 import com.thelazybattley.movies.domain.item.movies.Movie
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -29,7 +30,7 @@ fun DashboardHighlightedMovie(
 ) {
     ConstraintLayout(
         modifier = modifier
-            .height(height = 256.dp)
+            .height(height = 350.dp)
     ) {
         val (image, title, genres) = createRefs()
         GlideImage(
@@ -61,7 +62,7 @@ fun DashboardHighlightedMovie(
         )
 
         Text(
-            text = movie.genreIds.toString(),
+            text = movie.genres.toReadableString(),
             style = textStyle.urbanist.copy(
                 color = colors.white1,
                 fontWeight = FontWeight.Medium,
@@ -93,7 +94,10 @@ private fun PreviewDashboardHighlightedMovie() {
                 releaseDate = "",
                 title = "Monkey",
                 voteAverage = 3.2,
-                backdropImage = ""
+                backdropImage = "",
+                genres = listOf(
+                    "Action", "Comedy"
+                )
             )
         )
     }

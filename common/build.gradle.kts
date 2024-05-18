@@ -36,6 +36,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtension.get()
@@ -66,6 +67,8 @@ dependencies {
     annotationProcessor(libs.room.compiler)
     ksp(libs.room.ksp)
     implementation(libs.room.ktx)
+
+    implementation(libs.timber)
 }
 
 kapt {

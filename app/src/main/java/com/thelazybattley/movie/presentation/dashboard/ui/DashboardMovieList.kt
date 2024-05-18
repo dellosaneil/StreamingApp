@@ -128,6 +128,7 @@ private fun PreviewDashboardMovieList() {
                     title = "Monkey",
                     voteAverage = 3.2,
                     backdropImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
+                    genres = emptyList()
                 ),
                 Movie(
                     genreIds = listOf(1),
@@ -139,6 +140,7 @@ private fun PreviewDashboardMovieList() {
                     title = "Monkey",
                     voteAverage = 3.2,
                     backdropImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
+                    genres = emptyList()
                 ),
                 Movie(
                     genreIds = listOf(1),
@@ -150,6 +152,7 @@ private fun PreviewDashboardMovieList() {
                     title = "Monkey",
                     voteAverage = 3.2,
                     backdropImage = "https://image.tmdb.org/t/p/w400//gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
+                    genres = emptyList()
                 )
             )
         )

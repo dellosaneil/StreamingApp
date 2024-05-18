@@ -12,7 +12,9 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object LocalModule {
+object CommonLocalModule {
+
+    private const val DB_NAME = "common_movie_db"
 
     @Singleton
     @Provides
@@ -21,8 +23,8 @@ object LocalModule {
     ) = Room.databaseBuilder(
         context,
         CommonDatabase::class.java,
-        "common_movie_db"
-    )
+        DB_NAME
+    ).build()
 
     @Singleton
     @Provides

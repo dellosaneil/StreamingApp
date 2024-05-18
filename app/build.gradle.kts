@@ -40,7 +40,9 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtension.get()
     }
@@ -73,6 +75,7 @@ dependencies {
     implementation(libs.glide.compose)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.constraintlayout.compose)
+    implementation(libs.timber)
 }
 
 kapt {

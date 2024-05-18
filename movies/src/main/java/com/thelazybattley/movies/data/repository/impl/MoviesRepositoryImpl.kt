@@ -1,11 +1,11 @@
 package com.thelazybattley.movies.data.repository.impl
 
 import com.thelazybattley.common.domain.usecase.GetImageFromPath
-import com.thelazybattley.movies.domain.item.movies.MovieListType
-import com.thelazybattley.movies.domain.item.movies.MoviesData
 import com.thelazybattley.movies.data.network.response.movies.toData
 import com.thelazybattley.movies.data.network.service.MoviesService
 import com.thelazybattley.movies.data.repository.MoviesRepository
+import com.thelazybattley.movies.domain.item.movies.MovieListType
+import com.thelazybattley.movies.domain.item.movies.MoviesData
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(
@@ -17,12 +17,16 @@ class MoviesRepositoryImpl @Inject constructor(
         val response = when (type) {
             MovieListType.POPULAR -> moviesService
                 .getPopularMovies()
+
             MovieListType.TOP_RATED -> moviesService
                 .getTopRatedMovies()
+
             MovieListType.NOW_SHOWING -> moviesService
                 .getNowPlayingMovies()
+
             MovieListType.UPCOMING -> moviesService
                 .getUpcomingMovies()
+
             MovieListType.TRENDING -> moviesService
                 .getTrendingMovies()
         }
@@ -30,15 +34,20 @@ class MoviesRepositoryImpl @Inject constructor(
         MoviesData(
             results = response
                 .results
+                .filter {
+                    it.backdropPath != null && it.posterPath != null
+                }
                 .map { item ->
-                    item.toData().copy(
-                        posterImage = getImageFromPath(
-                            path = item.posterPath
-                        ),
-                        backdropImage = getImageFromPath(
-                            path = item.backdropPath ?: ""
+                    item
+                        .toData()
+                        .copy(
+                            posterImage = getImageFromPath(
+                                path = item.posterPath!!
+                            ),
+                            backdropImage = getImageFromPath(
+                                path = item.backdropPath!!
+                            )
                         )
-                    )
                 }
         )
     }

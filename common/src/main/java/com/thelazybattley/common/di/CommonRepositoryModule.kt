@@ -9,8 +9,9 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class RetrofitModule {
+abstract class CommonRepositoryModule {
 
     @Binds
     abstract fun bindCommonRepository(impl: CommonRepositoryImpl): CommonRepository
+
 }

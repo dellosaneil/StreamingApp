@@ -16,6 +16,7 @@ gson = "2.10.1"
 retrofit-gson = "2.11.0"
 okhttp-bom = "4.12.0"
 runtime = "1.6.7"
+timber = "5.0.1"
 ui-text-google-fonts = "1.6.7"
 constraintlayout-compose = "1.0.1"
 room = "2.6.1"
@@ -52,6 +53,7 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ksp = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

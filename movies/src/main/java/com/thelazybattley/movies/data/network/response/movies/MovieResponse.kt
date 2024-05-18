@@ -12,7 +12,7 @@ data class MovieResponse(
     val originalTitle: String,
     val overview: String,
     val popularity: Double,
-    val posterPath: String,
+    val posterPath: String?,
     val releaseDate: String,
     val title: String,
     val video: Boolean,
@@ -25,9 +25,10 @@ fun MovieResponse.toData() = Movie(
     id = id,
     overview = overview,
     popularity = popularity,
-    posterImage = posterPath,
+    posterImage = posterPath ?: "",
     releaseDate = releaseDate,
     title = title,
     voteAverage = round(voteAverage * 10) / 10,
-    backdropImage = backdropPath ?: ""
+    backdropImage = backdropPath ?: "",
+    genres = emptyList()
 )

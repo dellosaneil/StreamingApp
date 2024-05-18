@@ -35,6 +35,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtension.get()
@@ -42,6 +43,8 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":common"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -52,7 +55,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(project(":common"))
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.retrofit)
@@ -62,6 +64,7 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
+    implementation(libs.timber)
 }
 
 kapt {
