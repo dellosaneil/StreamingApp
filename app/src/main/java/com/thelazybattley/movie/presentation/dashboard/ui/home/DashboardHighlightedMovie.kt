@@ -1,4 +1,4 @@
-package com.thelazybattley.movie.presentation.dashboard.ui
+package com.thelazybattley.movie.presentation.dashboard.ui.home
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,7 +30,7 @@ fun DashboardHighlightedMovie(
     modifier: Modifier = Modifier,
     movie: Movie
 ) {
-    val backdropColor = Brush.horizontalGradient(
+    val backdropColor = Brush.linearGradient(
         colors = listOf(
             colors.black2.copy(
                 alpha = 0f

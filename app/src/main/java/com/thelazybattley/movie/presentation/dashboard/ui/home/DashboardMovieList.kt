@@ -1,4 +1,4 @@
-package com.thelazybattley.movie.presentation.dashboard.ui
+package com.thelazybattley.movie.presentation.dashboard.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

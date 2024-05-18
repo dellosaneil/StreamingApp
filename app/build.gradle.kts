@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.constraintlayout.compose)
     implementation(libs.timber)
+    implementation(libs.compose.material)
 }
 
 kapt {
