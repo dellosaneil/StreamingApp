@@ -1,7 +1,7 @@
 package com.thelazybattley.common.domain.usecase.impl
 
 import com.thelazybattley.common.domain.usecase.GetGenreListUseCase
-import com.thelazybattley.common.network.repository.CommonRepository
+import com.thelazybattley.common.data.repository.CommonRepository
 import javax.inject.Inject
 
 class GetGenreListUseCaseImpl @Inject constructor(

@@ -1,7 +1,7 @@
 package com.thelazybattley.common.di
 
-import com.thelazybattley.common.network.repository.CommonRepository
-import com.thelazybattley.common.network.repository.impl.CommonRepositoryImpl
+import com.thelazybattley.common.data.repository.CommonRepository
+import com.thelazybattley.common.data.repository.impl.CommonRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

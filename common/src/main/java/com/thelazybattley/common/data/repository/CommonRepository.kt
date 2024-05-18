@@ -1,4 +1,4 @@
-package com.thelazybattley.common.network.repository
+package com.thelazybattley.common.data.repository
 
 import com.thelazybattley.common.domain.item.Genre
 
