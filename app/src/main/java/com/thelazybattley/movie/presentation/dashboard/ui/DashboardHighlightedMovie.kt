@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -28,9 +30,26 @@ fun DashboardHighlightedMovie(
     modifier: Modifier = Modifier,
     movie: Movie
 ) {
+    val backdropColor = Brush.horizontalGradient(
+        colors = listOf(
+            colors.black2.copy(
+                alpha = 0f
+            ),
+            colors.black2.copy(
+                alpha = 0.5f
+            )
+        )
+    )
+
     ConstraintLayout(
         modifier = modifier
             .height(height = 350.dp)
+            .drawWithContent {
+                drawContent()
+                drawRect(
+                    brush = backdropColor,
+                )
+            }
     ) {
         val (image, title, genres) = createRefs()
         GlideImage(
