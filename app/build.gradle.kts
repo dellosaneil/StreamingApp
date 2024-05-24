@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.constraintlayout.compose)
     implementation(libs.timber)
     implementation(libs.compose.material)
+    implementation(libs.androidx.compose.animation)
 }
 
 kapt {

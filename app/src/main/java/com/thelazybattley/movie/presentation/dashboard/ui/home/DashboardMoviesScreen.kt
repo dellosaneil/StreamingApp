@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -37,10 +38,9 @@ fun DashboardMoviesScreen(
             }
         }
         item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-        item {
             DashboardMovieList(
+                modifier = Modifier
+                    .padding(top = 8.dp),
                 movies = uiState.nowShowingMovies,
                 groupName = stringResource(id = MovieGroupType.NOW_SHOWING.text)
             ) {
@@ -49,11 +49,9 @@ fun DashboardMoviesScreen(
         }
 
         item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        item {
             DashboardMovieList(
+                modifier = Modifier
+                    .padding(top = 8.dp),
                 movies = uiState.upcomingMovies,
                 groupName = stringResource(id = MovieGroupType.UPCOMING.text)
             ) {
@@ -62,11 +60,9 @@ fun DashboardMoviesScreen(
         }
 
         item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        item {
             DashboardMovieList(
+                modifier = Modifier
+                    .padding(top = 8.dp),
                 movies = uiState.popularMovies,
                 groupName = stringResource(id = MovieGroupType.POPULAR.text)
             ) {
@@ -75,11 +71,9 @@ fun DashboardMoviesScreen(
         }
 
         item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        item {
             DashboardMovieList(
+                modifier = Modifier
+                    .padding(top = 8.dp),
                 movies = uiState.topRatedMovies,
                 groupName = stringResource(id = MovieGroupType.TOP_RATED.text)
             ) {
@@ -88,11 +82,9 @@ fun DashboardMoviesScreen(
         }
 
         item {
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        item {
             DashboardMovieList(
+                modifier = Modifier
+                    .padding(top = 8.dp),
                 movies = uiState.trendingMovies,
                 groupName = stringResource(id = MovieGroupType.TRENDING.text)
             ) {

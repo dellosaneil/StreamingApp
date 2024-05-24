@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.timber)
     implementation(libs.glide.compose)
     implementation(libs.constraintlayout.compose)
+    implementation(libs.androidx.compose.animation)
 }
 
 kapt {
