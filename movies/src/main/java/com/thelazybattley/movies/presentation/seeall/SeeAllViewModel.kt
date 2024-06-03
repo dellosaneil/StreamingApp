@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.thelazybattley.common.presentation.base.BaseViewModel
 import com.thelazybattley.common.presentation.navigation.NavScreens
 import com.thelazybattley.movies.data.network.usecase.GetMovieListUseCase
-import com.thelazybattley.movies.presentation.util.toMovieGroupType
+`import com.thelazybattley.movies.domain.item.movies.MovieGroupType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ class SeeAllViewModel @Inject constructor(
     private val getMovieListUseCase: GetMovieListUseCase
 ) : BaseViewModel<SeeAllEvents, SeeAllUiState>() {
 
-    private val type = savedStateHandle.get<String>(NavScreens.TYPE)
+    private val type = savedStateHandle.get<String>(NavScreens.TYPE) ?: MovieGroupType.POPULAR.groupName
 
     override fun initialState() = SeeAllUiState()
 
@@ -27,7 +27,7 @@ class SeeAllViewModel @Inject constructor(
 
     private fun updateMovieGroupType() {
         viewModelScope.launch(context = Dispatchers.IO) {
-            val movieGroupType = type.toMovieGroupType
+            val movieGroupType = MovieGroupType.fromString(value = type)
             updateState { state ->
                 state.copy(movieGroupType = movieGroupType)
             }
@@ -37,7 +37,7 @@ class SeeAllViewModel @Inject constructor(
 
     private fun getInitialMovies() {
         viewModelScope.launch(context = Dispatchers.IO) {
-            getMovieListUseCase(type.toMovieGroupType).fold(
+            getMovieListUseCase(MovieGroupType.fromString(value = type)).fold(
                 onSuccess = { moviesData ->
                     updateState { state ->
                         state.copy(

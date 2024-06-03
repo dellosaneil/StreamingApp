@@ -69,6 +69,8 @@ dependencies {
     implementation(libs.glide.compose)
     implementation(libs.constraintlayout.compose)
     implementation(libs.androidx.compose.animation)
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.paging.compose)
 }
 
 kapt {
