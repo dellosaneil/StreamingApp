@@ -13,22 +13,22 @@ class MoviesRepositoryImpl @Inject constructor(
     private val getImageFromPath: GetImageFromPath
 ) : MoviesRepository {
 
-    override suspend fun getMovieList(type: MovieGroupType) = runCatching {
+    override suspend fun getMovieList(type: MovieGroupType, page: Int): Result<MoviesData> = runCatching {
         val response = when (type) {
             MovieGroupType.POPULAR -> moviesService
-                .getPopularMovies()
+                .getPopularMovies(page = page)
 
             MovieGroupType.TOP_RATED -> moviesService
-                .getTopRatedMovies()
+                .getTopRatedMovies(page = page)
 
             MovieGroupType.NOW_SHOWING -> moviesService
-                .getNowPlayingMovies()
+                .getNowPlayingMovies(page = page)
 
             MovieGroupType.UPCOMING -> moviesService
-                .getUpcomingMovies()
+                .getUpcomingMovies(page = page)
 
             MovieGroupType.TRENDING -> moviesService
-                .getTrendingMovies()
+                .getTrendingMovies(page = page)
         }
 
         MoviesData(

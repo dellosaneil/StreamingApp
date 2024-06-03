@@ -5,6 +5,6 @@ import com.thelazybattley.movies.domain.item.movies.MoviesData
 
 interface GetMovieListUseCase {
 
-    suspend operator fun invoke(type: MovieGroupType) : Result<MoviesData>
+    suspend operator fun invoke(type: MovieGroupType, page : Int = 1) : Result<MoviesData>
 
 }

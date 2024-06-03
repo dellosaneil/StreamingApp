@@ -2,21 +2,22 @@ package com.thelazybattley.movies.data.network.service
 
 import com.thelazybattley.movies.data.network.response.movies.MoviesDataResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface MoviesService {
 
     @GET("movie/now_playing")
-    suspend fun getNowPlayingMovies() : MoviesDataResponse
+    suspend fun getNowPlayingMovies(@Query("page") page: Int) : MoviesDataResponse
 
     @GET("movie/popular")
-    suspend fun getPopularMovies() : MoviesDataResponse
+    suspend fun getPopularMovies(@Query("page") page: Int) : MoviesDataResponse
 
     @GET("movie/top_rated")
-    suspend fun getUpcomingMovies() : MoviesDataResponse
+    suspend fun getUpcomingMovies(@Query("page") page: Int) : MoviesDataResponse
 
     @GET("movie/upcoming")
-    suspend fun getTopRatedMovies() : MoviesDataResponse
+    suspend fun getTopRatedMovies(@Query("page") page: Int) : MoviesDataResponse
 
     @GET("trending/movie/week")
-    suspend fun getTrendingMovies() : MoviesDataResponse
+    suspend fun getTrendingMovies(@Query("page") page: Int) : MoviesDataResponse
 }

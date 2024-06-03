@@ -5,5 +5,5 @@ import com.thelazybattley.movies.domain.item.movies.MoviesData
 
 interface MoviesRepository {
 
-    suspend fun getMovieList(type: MovieGroupType): Result<MoviesData>
+    suspend fun getMovieList(type: MovieGroupType, page : Int): Result<MoviesData>
 }

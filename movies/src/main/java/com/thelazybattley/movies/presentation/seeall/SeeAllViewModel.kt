@@ -2,10 +2,14 @@ package com.thelazybattley.movies.presentation.seeall
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.thelazybattley.common.presentation.base.BaseViewModel
 import com.thelazybattley.common.presentation.navigation.NavScreens
+import com.thelazybattley.movies.data.network.pagination.seeall.SeeAllPagingSource
 import com.thelazybattley.movies.data.network.usecase.GetMovieListUseCase
-`import com.thelazybattley.movies.domain.item.movies.MovieGroupType
+import com.thelazybattley.movies.domain.item.movies.MovieGroupType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +21,17 @@ class SeeAllViewModel @Inject constructor(
     private val getMovieListUseCase: GetMovieListUseCase
 ) : BaseViewModel<SeeAllEvents, SeeAllUiState>() {
 
-    private val type = savedStateHandle.get<String>(NavScreens.TYPE) ?: MovieGroupType.POPULAR.groupName
+    val movies = Pager(
+        config = PagingConfig(pageSize = 15)
+    ) {
+        SeeAllPagingSource(
+            getMovieListUseCase = getMovieListUseCase,
+            type = MovieGroupType.fromString(value = type)
+        )
+    }.flow.cachedIn(scope = viewModelScope)
+
+    private val type =
+        savedStateHandle.get<String>(NavScreens.TYPE) ?: MovieGroupType.POPULAR.groupName
 
     override fun initialState() = SeeAllUiState()
 
@@ -31,24 +45,6 @@ class SeeAllViewModel @Inject constructor(
             updateState { state ->
                 state.copy(movieGroupType = movieGroupType)
             }
-            getInitialMovies()
-        }
-    }
-
-    private fun getInitialMovies() {
-        viewModelScope.launch(context = Dispatchers.IO) {
-            getMovieListUseCase(MovieGroupType.fromString(value = type)).fold(
-                onSuccess = { moviesData ->
-                    updateState { state ->
-                        state.copy(
-                            movies = moviesData.results
-                        )
-                    }
-                },
-                onFailure = {
-
-                }
-            )
         }
     }
 }
