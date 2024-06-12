@@ -1,6 +1,7 @@
 package com.thelazybattley.common.presentation.util
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -25,9 +26,15 @@ import com.thelazybattley.common.presentation.theme.textStyle
 fun MoviePoster(
     modifier: Modifier = Modifier,
     posterImage: String,
-    voteAverage: Double
+    voteAverage: Double,
+    onMovieClicked: () -> Unit
 ) {
-    Box(modifier = modifier) {
+    Box(
+        modifier = modifier
+            .clickable {
+                onMovieClicked()
+            }
+    ) {
         GlideImage(
             model = posterImage,
             contentDescription = null,

@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.thelazybattley.common.presentation.navigation.NavScreens
 import com.thelazybattley.common.presentation.theme.MovieTheme
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
@@ -31,8 +32,9 @@ import com.thelazybattley.movies.domain.item.movies.Movie
 fun DashboardMovieList(
     modifier: Modifier = Modifier,
     movies: List<Movie>,
+    label: String,
     groupName: String,
-    onNavigate: () -> Unit
+    onNavigate: (String) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -48,7 +50,7 @@ fun DashboardMovieList(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = groupName,
+                text = label,
                 style = textStyle.urbanist.copy(
                     color = colors.black1,
                     fontWeight = FontWeight.Bold,
@@ -68,7 +70,7 @@ fun DashboardMovieList(
                     .padding(end = 16.dp)
                     .clip(shape = RoundedCornerShape(size = 8.dp))
                     .clickable {
-                        onNavigate()
+                        onNavigate(NavScreens.SeeAll.args(type = groupName))
                     }
                     .padding(all = 4.dp)
 
@@ -83,7 +85,10 @@ fun DashboardMovieList(
                 MoviePoster(
                     modifier = Modifier,
                     posterImage = movie.posterImage,
-                    voteAverage = movie.voteAverage
+                    voteAverage = movie.voteAverage,
+                    onMovieClicked = {
+                        onNavigate(NavScreens.MovieDetails.args(id = movie.id))
+                    }
                 )
             }
         }
@@ -95,7 +100,8 @@ fun DashboardMovieList(
 private fun PreviewDashboardMovieList() {
     MovieTheme {
         DashboardMovieList(
-            groupName = "Now Playing",
+            label = "Now Playing",
+            groupName = "GroupName",
             movies = listOf(
                 Movie(
                     genreIds = listOf(1),
