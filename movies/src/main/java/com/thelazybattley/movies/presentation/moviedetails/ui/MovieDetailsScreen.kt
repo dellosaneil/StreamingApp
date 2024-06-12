@@ -1,11 +1,11 @@
-package com.thelazybattley.movies.presentation.details.ui
+package com.thelazybattley.movies.presentation.moviedetails.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.thelazybattley.movies.presentation.details.MovieDetailsState
-import com.thelazybattley.movies.presentation.details.MovieDetailsViewModel
+import com.thelazybattley.movies.presentation.moviedetails.MovieDetailsState
+import com.thelazybattley.movies.presentation.moviedetails.MovieDetailsViewModel
 
 @Composable
 fun MovieDetailsScreen(

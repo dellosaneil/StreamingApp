@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.thelazybattley.common.presentation.navigation.NavScreens
 import com.thelazybattley.movie.presentation.dashboard.ui.DashboardScreen
-import com.thelazybattley.movies.presentation.details.ui.MovieDetailsScreen
+import com.thelazybattley.movies.presentation.moviedetails.ui.MovieDetailsScreen
 import com.thelazybattley.movies.presentation.seeall.ui.SeeAllScreen
 
 @Composable

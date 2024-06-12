@@ -1,7 +1,9 @@
 package com.thelazybattley.movies.data.network.service
 
+import com.thelazybattley.movies.data.network.response.moviedetails.MovieDetailsDataResponse
 import com.thelazybattley.movies.data.network.response.movies.MoviesDataResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MoviesService {
@@ -20,4 +22,8 @@ interface MoviesService {
 
     @GET("trending/movie/week")
     suspend fun getTrendingMovies(@Query("page") page: Int) : MoviesDataResponse
+
+    @GET("movie/{id}")
+    suspend fun getMovieDetails(@Path("id") id: Int) : MovieDetailsDataResponse
+
 }
