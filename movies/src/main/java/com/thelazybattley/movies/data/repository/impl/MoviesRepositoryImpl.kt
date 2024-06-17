@@ -59,5 +59,10 @@ class MoviesRepositoryImpl @Inject constructor(
         runCatching {
             val response = moviesService.getMovieDetails(id = id)
             response.toData
+                .copy(
+                    backdropImage = getImageFromPath(
+                        path = response.backdropPath
+                    )
+                )
         }
 }

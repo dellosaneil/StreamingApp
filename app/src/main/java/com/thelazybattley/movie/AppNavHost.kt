@@ -2,8 +2,10 @@ package com.thelazybattley.movie
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.thelazybattley.common.presentation.navigation.NavScreens
 import com.thelazybattley.movie.presentation.dashboard.ui.DashboardScreen
 import com.thelazybattley.movies.presentation.moviedetails.ui.MovieDetailsScreen
@@ -31,7 +33,12 @@ fun MyNavHost(
                 navHostController.popBackStack()
             }
         }
-        composable(route = NavScreens.MovieDetails.routeWithArgs) {
+        composable(
+            route = NavScreens.MovieDetails.routeWithArgs,
+            arguments = listOf(
+                navArgument(name = NavScreens.ID) { type = NavType.IntType }
+            )
+        ) {
             MovieDetailsScreen(
                 onNavigate = { route ->
                     navHostController.navigate(route)

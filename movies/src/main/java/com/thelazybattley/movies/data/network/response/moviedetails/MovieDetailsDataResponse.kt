@@ -29,14 +29,14 @@ data class MovieDetailsDataResponse(
     val tagline: String,
     val title: String,
     val video: Boolean,
-    val voteAverage: Int,
+    val voteAverage: Double,
     val voteCount: Int
 )
 
 val MovieDetailsDataResponse.toData
     get() = run {
         MovieDetailsData(
-            backdropPath = backdropPath,
+            backdropImage = backdropPath,
             budget = budget,
             genres = genres.map { response ->
                 MovieDetailsGenre(
@@ -55,7 +55,6 @@ val MovieDetailsDataResponse.toData
             productionCompanies = productionCompanies.map { response ->
                 MovieDetailsProductionCompany(
                     id = response.id,
-                    logoPath = response.logoPath,
                     name = response.name,
                     originCountry = response.originCountry
                 )
@@ -71,9 +70,9 @@ val MovieDetailsDataResponse.toData
             spokenLanguages = spokenLanguages.map { response ->
                 MovieDetailsSpokenLanguage(
                     englishName = response.englishName,
-                    iso6391 = response.iso6391,
                     name = response.name
                 )
-            }
+            },
+            releaseYear = releaseDate.split("-").first().toInt()
         )
     }

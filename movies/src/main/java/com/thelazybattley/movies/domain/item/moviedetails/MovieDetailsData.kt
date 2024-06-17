@@ -1,7 +1,7 @@
 package com.thelazybattley.movies.domain.item.moviedetails
 
 data class MovieDetailsData(
-    val backdropPath: String,
+    val backdropImage: String,
     val budget: Int,
     val genres: List<MovieDetailsGenre>,
     val homepage: String,
@@ -20,6 +20,7 @@ data class MovieDetailsData(
     val status: String,
     val title: String,
     val video: Boolean,
-    val voteAverage: Int,
-    val voteCount: Int
+    val voteAverage: Double,
+    val voteCount: Int,
+    val releaseYear: Int
 )
