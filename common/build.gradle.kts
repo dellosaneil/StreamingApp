@@ -55,6 +55,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.retrofit)
     implementation(libs.hilt.android)
+    debugImplementation(libs.ui.tooling)
     kapt(libs.hilt.compiler)
     implementation(libs.gson)
     implementation(libs.retrofit.gson)
