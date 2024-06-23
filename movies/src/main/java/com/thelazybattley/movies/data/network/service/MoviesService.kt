@@ -1,5 +1,6 @@
 package com.thelazybattley.movies.data.network.service
 
+import com.thelazybattley.common.data.network.response.credits.CreditsDataResponse
 import com.thelazybattley.movies.data.network.response.moviedetails.MovieDetailsDataResponse
 import com.thelazybattley.movies.data.network.response.movies.MoviesDataResponse
 import retrofit2.http.GET
@@ -25,5 +26,8 @@ interface MoviesService {
 
     @GET("movie/{id}")
     suspend fun getMovieDetails(@Path("id") id: Int) : MovieDetailsDataResponse
+
+    @GET("movie/{id}/credits")
+    suspend fun getMovieCredits(@Path("id") id: Int): CreditsDataResponse
 
 }

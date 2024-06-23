@@ -1,5 +1,7 @@
 package com.thelazybattley.movies.data.repository.impl
 
+import com.thelazybattley.common.data.network.response.credits.toData
+import com.thelazybattley.common.domain.item.credits.CreditsData
 import com.thelazybattley.common.domain.usecase.GetImageFromPath
 import com.thelazybattley.movies.data.network.response.moviedetails.toData
 import com.thelazybattley.movies.data.network.response.movies.toData
@@ -65,4 +67,25 @@ class MoviesRepositoryImpl @Inject constructor(
                     )
                 )
         }
+
+    override suspend fun getMovieCredits(id: Int): Result<CreditsData> = runCatching {
+        val response = moviesService.getMovieCredits(id = id)
+        response.toData
+            .copy(
+                cast = response.toData.cast.map { cast ->
+                    cast.copy(
+                        profilePath = run {
+                            if(cast.profilePath.isNotEmpty()) getImageFromPath(path = cast.profilePath) else ""
+                        }
+                    )
+                },
+                crew = response.toData.crew.map { crew ->
+                    crew.copy(
+                        profilePath = run {
+                            if(crew.profilePath.isNotEmpty()) getImageFromPath(path = crew.profilePath) else ""
+                        }
+                    )
+                }
+            )
+    }
 }

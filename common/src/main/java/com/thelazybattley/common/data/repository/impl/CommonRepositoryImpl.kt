@@ -5,7 +5,7 @@ import com.thelazybattley.common.data.network.local.genre.toData
 import com.thelazybattley.common.data.network.response.genre.toData
 import com.thelazybattley.common.data.network.services.CommonService
 import com.thelazybattley.common.data.repository.CommonRepository
-import com.thelazybattley.common.domain.item.toEntity
+import com.thelazybattley.common.domain.item.genre.toEntity
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 

@@ -2,6 +2,7 @@ package com.thelazybattley.movies.presentation.moviedetails.ui
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,6 +32,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
 import com.thelazybattley.common.presentation.util.CommonChip
+import com.thelazybattley.common.presentation.util.CommonCreditChip
 import com.thelazybattley.movies.R
 import com.thelazybattley.movies.presentation.moviedetails.MovieDetailsCallbacks
 import com.thelazybattley.movies.presentation.moviedetails.MovieDetailsState
@@ -87,9 +89,9 @@ fun MovieDetailsScreen(
         item {
             LazyRow(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                    .fillMaxWidth(),
+                verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
                 item {
                     val icon = painterResource(id = com.thelazybattley.common.R.drawable.ic_star)
@@ -150,20 +152,48 @@ fun MovieDetailsScreen(
                 }
             )
 
-            Text(
-                text = stringResource(id = R.string.show_more),
-                style = textStyle.urbanist.copy(
-                    color = colors.red1,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Medium,
-                    letterSpacing = (0.2).sp
-                ),
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .clickable {
-                        callbacks.showMoreTextClicked()
-                    }
-            )
+            if (uiState.hasTextOverflow) {
+                Text(
+                    text = stringResource(id = R.string.show_more),
+                    style = textStyle.urbanist.copy(
+                        color = colors.red1,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium,
+                        letterSpacing = (0.2).sp
+                    ),
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .clickable {
+                            callbacks.showMoreTextClicked()
+                        }
+                )
+            }
+        }
+        item {
+            Spacer(modifier = Modifier.height(16.dp))
+            LazyRow(
+                modifier = Modifier,
+                verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                contentPadding = PaddingValues(horizontal = 16.dp)
+            ) {
+                items(items = uiState.credits?.crew ?: emptyList(), key = { it.id }) { crew ->
+                    CommonCreditChip(
+                        modifier = Modifier.padding(end = 8.dp),
+                        name = crew.name,
+                        department = crew.knownForDepartment,
+                        image = crew.profilePath,
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                }
+                items(items = uiState.credits?.cast ?: emptyList(), key = { it.id }) { cast ->
+                    CommonCreditChip(
+                        modifier = Modifier.padding(end = 8.dp),
+                        name = cast.name,
+                        department = cast.knownForDepartment,
+                        image = cast.profilePath,
+                    )
+                }
+            }
         }
     }
 }

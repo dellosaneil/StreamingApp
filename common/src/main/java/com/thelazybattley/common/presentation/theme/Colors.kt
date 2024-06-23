@@ -11,7 +11,8 @@ val lightColors = Colors(
     black2 = Black2,
     red1 = Red1,
     gray1 = Gray1,
-    gray2 = Gray2
+    gray2 = Gray2,
+    gray3 = Gray3
 )
 
 data class Colors(
@@ -20,7 +21,8 @@ data class Colors(
     val black1: Color,
     val black2: Color,
     val gray1: Color,
-    val gray2: Color
+    val gray2: Color,
+    val gray3: Color,
 )
 
 val LocalColors = compositionLocalOf<Colors> { error("No colors provided") }

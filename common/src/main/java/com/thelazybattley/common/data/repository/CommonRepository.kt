@@ -1,6 +1,6 @@
 package com.thelazybattley.common.data.repository
 
-import com.thelazybattley.common.domain.item.Genre
+import com.thelazybattley.common.domain.item.genre.Genre
 import kotlinx.coroutines.flow.Flow
 
 interface CommonRepository {

@@ -1,4 +1,4 @@
-package com.thelazybattley.common.domain.item
+package com.thelazybattley.common.domain.item.genre
 
 import com.thelazybattley.common.data.network.local.genre.GenreEntity
 

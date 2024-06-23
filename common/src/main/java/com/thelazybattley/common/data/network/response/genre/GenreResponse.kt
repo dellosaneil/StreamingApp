@@ -1,6 +1,6 @@
 package com.thelazybattley.common.data.network.response.genre
 
-import com.thelazybattley.common.domain.item.Genre
+import com.thelazybattley.common.domain.item.genre.Genre
 
 data class GenreResponse(
     val id: Int,
