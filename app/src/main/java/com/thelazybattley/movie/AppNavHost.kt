@@ -43,9 +43,7 @@ fun MyNavHost(
                 onNavigate = { route ->
                     navHostController.navigate(route)
                 }
-            ) {
-                navHostController.popBackStack()
-            }
+            )
         }
     }
 }

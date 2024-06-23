@@ -1,5 +1,7 @@
 package com.thelazybattley.movies.presentation.moviedetails.ui
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,7 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -27,29 +31,29 @@ import com.bumptech.glide.integration.compose.GlideImage
 import com.thelazybattley.common.presentation.theme.colors
 import com.thelazybattley.common.presentation.theme.textStyle
 import com.thelazybattley.common.presentation.util.CommonChip
+import com.thelazybattley.movies.R
+import com.thelazybattley.movies.presentation.moviedetails.MovieDetailsCallbacks
 import com.thelazybattley.movies.presentation.moviedetails.MovieDetailsState
 import com.thelazybattley.movies.presentation.moviedetails.MovieDetailsViewModel
 
 @Composable
 fun MovieDetailsScreen(
-    onNavigate: (String) -> Unit,
-    onBackButtonPressed: () -> Unit
+    onNavigate: (String) -> Unit
 ) {
     val viewModel = hiltViewModel<MovieDetailsViewModel>()
     val uiState by viewModel.state.collectAsState()
 
-    MovieDetailsScreen(uiState = uiState) {
-
-    }
-
-
+    MovieDetailsScreen(
+        uiState = uiState,
+        callbacks = viewModel
+    )
 }
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun MovieDetailsScreen(
     uiState: MovieDetailsState,
-    onBackButtonPressed: () -> Unit
+    callbacks: MovieDetailsCallbacks
 ) {
     if (uiState.movieDetails == null) return
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -59,8 +63,10 @@ fun MovieDetailsScreen(
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(height = 256.dp)
+                    .height(height = 256.dp),
+                contentScale = ContentScale.Crop
             )
+            Spacer(modifier = Modifier.height(8.dp))
         }
 
         item {
@@ -87,7 +93,6 @@ fun MovieDetailsScreen(
             ) {
                 item {
                     val icon = painterResource(id = com.thelazybattley.common.R.drawable.ic_star)
-
                     Icon(
                         painter = icon,
                         contentDescription = null,
@@ -124,6 +129,41 @@ fun MovieDetailsScreen(
                     Spacer(modifier = Modifier.width(8.dp))
                 }
             }
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+        item {
+            Text(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .animateContentSize(),
+                text = uiState.movieDetails.overview,
+                style = textStyle.urbanist.copy(
+                    color = colors.gray2,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Medium,
+                    letterSpacing = (0.2).sp
+                ),
+                maxLines = uiState.maxLines,
+                overflow = TextOverflow.Ellipsis,
+                onTextLayout = { result ->
+                    callbacks.hasTextOverflow(result.hasVisualOverflow)
+                }
+            )
+
+            Text(
+                text = stringResource(id = R.string.show_more),
+                style = textStyle.urbanist.copy(
+                    color = colors.red1,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Medium,
+                    letterSpacing = (0.2).sp
+                ),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .clickable {
+                        callbacks.showMoreTextClicked()
+                    }
+            )
         }
     }
 }

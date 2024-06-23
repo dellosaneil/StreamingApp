@@ -8,14 +8,13 @@ import com.thelazybattley.movies.data.network.usecase.FetchMovieDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val fetchMovieDetails: FetchMovieDetails
-) : BaseViewModel<MovieDetailsEvents, MovieDetailsState>() {
+) : BaseViewModel<MovieDetailsEvents, MovieDetailsState>(), MovieDetailsCallbacks {
 
     override fun initialState() = MovieDetailsState()
 
@@ -33,13 +32,11 @@ class MovieDetailsViewModel @Inject constructor(
             fetchMovieDetails(id = id)
                 .fold(
                     onSuccess = { details ->
-                        Timber.d("Test: SUCCESS")
                         updateState { state ->
                             state.copy(
                                 movieDetails = details
                             )
                         }
-                        Timber.d("Test: ${getCurrentState().movieDetails}")
                     },
                     onFailure = {
                     it.printStackTrace()
@@ -47,4 +44,22 @@ class MovieDetailsViewModel @Inject constructor(
                 )
         }
     }
+
+    override fun hasTextOverflow(hasTextOverflow: Boolean) {
+        updateState {state ->
+            state.copy(
+                hasTextOverflow =  hasTextOverflow
+            )
+        }
+    }
+
+
+    override fun showMoreTextClicked() {
+        updateState { state ->
+            state.copy(
+                maxLines = Int.MAX_VALUE
+            )
+        }
+    }
+
 }
