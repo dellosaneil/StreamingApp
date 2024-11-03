@@ -1,6 +1,5 @@
 package com.thelazybattley.movies.presentation.moviedetails.ui
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -27,8 +26,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun MovieDetailsTab(
-    modifier: Modifier = Modifier,
-    contentPadding: PaddingValues
+    modifier: Modifier = Modifier
 ) {
     val coroutineScope = rememberCoroutineScope()
 
@@ -66,7 +64,7 @@ fun MovieDetailsTab(
                 selected = index == pagerState.currentPage,
                 onClick = {
                     coroutineScope.launch {
-                        pagerState.scrollToPage(index)
+                        pagerState.animateScrollToPage(index)
                     }
                 },
                 text = {
@@ -82,8 +80,7 @@ fun MovieDetailsTab(
         }
     }
     HorizontalPager(
-        state = pagerState, modifier = modifier,
-        contentPadding = contentPadding
+        state = pagerState, modifier = modifier
     ) { index ->
         Text(text = tabItems[index])
     }
@@ -93,7 +90,6 @@ fun MovieDetailsTab(
 @Composable
 private fun PreviewMovieDetailsTab() {
     MovieDetailsTab(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(start = 24.dp, end = 24.dp, top = 16.dp)
+        modifier = Modifier.fillMaxSize()
     )
 }

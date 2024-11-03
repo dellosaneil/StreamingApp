@@ -201,14 +201,10 @@ fun MovieDetailsScreen(
             }
         }
         item {
+            Spacer(modifier = Modifier.height(16.dp))
             MovieDetailsTab(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(
-                    top = 16.dp,
-                    start = 24.dp,
-                    end = 24.dp
-                )
+                    .fillMaxWidth()
             )
         }
     }
