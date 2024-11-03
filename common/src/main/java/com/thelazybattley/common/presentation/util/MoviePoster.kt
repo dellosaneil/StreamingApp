@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,6 +28,7 @@ fun MoviePoster(
     modifier: Modifier = Modifier,
     posterImage: String,
     voteAverage: Double,
+    contentScale : ContentScale = ContentScale.Fit,
     onMovieClicked: () -> Unit
 ) {
     Box(
@@ -40,9 +42,10 @@ fun MoviePoster(
             contentDescription = null,
             modifier = Modifier
                 .padding(all = 4.dp)
-                .clip(shape = RoundedCornerShape(size = 12.dp))
-                .height(height = 256.dp),
-            loading = placeholder(R.drawable.image_loading_transparent)
+                .height(height = 256.dp)
+                .clip(shape = RoundedCornerShape(size = 12.dp)),
+            loading = placeholder(R.drawable.image_loading_transparent),
+            contentScale = contentScale
         )
         Box(
             modifier = Modifier

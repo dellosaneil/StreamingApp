@@ -1,10 +1,12 @@
 package com.thelazybattley.movies.di
 
-import com.thelazybattley.movies.data.network.usecase.FetchMovieDetails
 import com.thelazybattley.movies.data.network.usecase.FetchMovieCredits
+import com.thelazybattley.movies.data.network.usecase.FetchMovieDetails
+import com.thelazybattley.movies.data.network.usecase.FetchRecommendationsUseCase
 import com.thelazybattley.movies.data.network.usecase.GetMovieListUseCase
-import com.thelazybattley.movies.data.network.usecase.impl.FetchMovieDetailsImpl
 import com.thelazybattley.movies.data.network.usecase.impl.FetchMovieCreditsImpl
+import com.thelazybattley.movies.data.network.usecase.impl.FetchMovieDetailsImpl
+import com.thelazybattley.movies.data.network.usecase.impl.FetchRecommendationsUseCaseImpl
 import com.thelazybattley.movies.data.network.usecase.impl.GetMovieListUseCaseImpl
 import dagger.Binds
 import dagger.Module
@@ -24,4 +26,7 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun bindsGetMovieCredits(impl: FetchMovieCreditsImpl): FetchMovieCredits
+
+    @Binds
+    abstract fun bindsFetchRecommendationsUseCase(impl: FetchRecommendationsUseCaseImpl): FetchRecommendationsUseCase
 }

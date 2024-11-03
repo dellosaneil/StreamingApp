@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 class GetMovieListUseCaseImpl @Inject constructor(
     private val repository: MoviesRepository
-): GetMovieListUseCase {
-    override suspend fun invoke(type: MovieGroupType, page: Int): Result<MoviesData> = repository.getMovieList(type = type, page = page)
+) : GetMovieListUseCase {
+    override suspend fun invoke(type: MovieGroupType, page: Int): Result<MoviesData> =
+        repository.getMovieList(type = type, page = page)
 }

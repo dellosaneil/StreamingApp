@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.LazyPagingItems
@@ -81,7 +82,8 @@ fun SeeAllScreen(
                     voteAverage = movie.voteAverage,
                     onMovieClicked = {
                         onNavigate(NavScreens.MovieDetails.args(id = movie.id))
-                    }
+                    },
+                    contentScale = ContentScale.FillWidth
                 )
             }
         }

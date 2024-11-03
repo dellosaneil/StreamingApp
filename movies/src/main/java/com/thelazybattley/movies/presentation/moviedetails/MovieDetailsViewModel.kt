@@ -6,6 +6,7 @@ import com.thelazybattley.common.presentation.base.BaseViewModel
 import com.thelazybattley.common.presentation.navigation.NavScreens
 import com.thelazybattley.movies.data.network.usecase.FetchMovieCredits
 import com.thelazybattley.movies.data.network.usecase.FetchMovieDetails
+import com.thelazybattley.movies.data.network.usecase.FetchRecommendationsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,7 +16,9 @@ import javax.inject.Inject
 class MovieDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val fetchMovieDetails: FetchMovieDetails,
-    private val fetchMovieCredits: FetchMovieCredits
+    private val fetchMovieCredits: FetchMovieCredits,
+    private val fetchRecommendationsUseCase: FetchRecommendationsUseCase
+
 ) : BaseViewModel<MovieDetailsEvents, MovieDetailsState>(), MovieDetailsCallbacks {
 
     override fun initialState() = MovieDetailsState()
@@ -62,6 +65,22 @@ class MovieDetailsViewModel @Inject constructor(
                                         .distinctBy { it.id }
                                         .filter { crew -> crew.knownForDepartment == "Directing" }
                                 )
+                            )
+                        }
+                    },
+                    onFailure = {
+
+                    }
+                )
+
+        }
+        viewModelScope.launch(context = Dispatchers.IO) {
+            fetchRecommendationsUseCase(id = id)
+                .fold(
+                    onSuccess = { recommendations ->
+                        updateState { state ->
+                            state.copy(
+                                recommendations = recommendations
                             )
                         }
                     },
