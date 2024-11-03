@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.thelazybattley.movie"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.thelazybattley.movie"

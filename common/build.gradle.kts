@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.thelazybattley.common"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26

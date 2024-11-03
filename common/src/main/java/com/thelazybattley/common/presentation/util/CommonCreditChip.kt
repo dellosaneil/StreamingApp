@@ -42,8 +42,8 @@ fun CommonCreditChip(
         GlideImage(
             model = image, contentDescription = "",
             modifier = Modifier
-                .clip(CircleShape)
-                .size(size = 36.dp),
+                .size(size = 36.dp)
+                .clip(CircleShape),
             loading = placeholder(R.drawable.image_loading_transparent),
             contentScale = ContentScale.Crop
         )
