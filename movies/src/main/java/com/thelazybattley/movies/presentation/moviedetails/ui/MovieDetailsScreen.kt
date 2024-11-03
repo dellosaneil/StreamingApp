@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -61,11 +62,12 @@ fun MovieDetailsScreen(
     onNavigate: (String) -> Unit
 ) {
     if (uiState.movieDetails == null) return
-    Column {
-        LazyColumn(
-            modifier = Modifier
-                .background(color = colors.white1)
-        ) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = colors.white1)
+    ) {
+        LazyColumn {
             item {
                 GlideImage(
                     model = uiState.movieDetails.backdropImage,
@@ -101,7 +103,8 @@ fun MovieDetailsScreen(
                     contentPadding = PaddingValues(horizontal = 16.dp)
                 ) {
                     item {
-                        val icon = painterResource(id = com.thelazybattley.common.R.drawable.ic_star)
+                        val icon =
+                            painterResource(id = com.thelazybattley.common.R.drawable.ic_star)
                         Icon(
                             painter = icon,
                             contentDescription = null,
