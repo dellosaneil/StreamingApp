@@ -1,6 +1,7 @@
 package com.thelazybattley.movies.presentation.moviedetails.ui
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -58,7 +59,11 @@ fun MovieDetailsScreen(
     callbacks: MovieDetailsCallbacks
 ) {
     if (uiState.movieDetails == null) return
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = colors.white1)
+    ) {
         item {
             GlideImage(
                 model = uiState.movieDetails.backdropImage,
@@ -194,6 +199,17 @@ fun MovieDetailsScreen(
                     )
                 }
             }
+        }
+        item {
+            MovieDetailsTab(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(
+                    top = 16.dp,
+                    start = 24.dp,
+                    end = 24.dp
+                )
+            )
         }
     }
 }

@@ -3,6 +3,7 @@ package com.thelazybattley.common.presentation.theme
 import androidx.compose.ui.graphics.Color
 
 val White1 = Color(0xffffffff)
+val White2 = Color(0xffEEEEEE)
 
 val Red1 = Color(0xffe21221)
 

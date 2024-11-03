@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 
 val lightColors = Colors(
     white1 = White1,
+    white2 = White2,
     black1 = Black1,
     black2 = Black2,
     red1 = Red1,
@@ -17,6 +18,7 @@ val lightColors = Colors(
 
 data class Colors(
     val white1: Color,
+    val white2: Color,
     val red1: Color,
     val black1: Color,
     val black2: Color,
