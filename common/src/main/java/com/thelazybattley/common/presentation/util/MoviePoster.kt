@@ -33,6 +33,8 @@ fun MoviePoster(
 ) {
     Box(
         modifier = modifier
+            .padding(all = 4.dp)
+            .clip(shape = RoundedCornerShape(size = 12.dp))
             .clickable {
                 onMovieClicked()
             }
@@ -41,7 +43,6 @@ fun MoviePoster(
             model = posterImage,
             contentDescription = null,
             modifier = Modifier
-                .padding(all = 4.dp)
                 .height(height = 256.dp)
                 .clip(shape = RoundedCornerShape(size = 12.dp)),
             loading = placeholder(R.drawable.image_loading_transparent),
