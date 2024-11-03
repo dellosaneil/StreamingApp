@@ -5,6 +5,7 @@ import com.thelazybattley.movies.domain.item.moviedetails.MovieDetailsData
 import com.thelazybattley.movies.domain.item.movies.MovieGroupType
 import com.thelazybattley.movies.domain.item.movies.MoviesData
 import com.thelazybattley.movies.domain.item.recommendations.RecommendationsData
+import com.thelazybattley.movies.domain.item.reviews.ReviewData
 
 interface MoviesRepository {
 
@@ -15,4 +16,6 @@ interface MoviesRepository {
     suspend fun getMovieCredits(id: Int): Result<CreditsData>
 
     suspend fun fetchRecommendations(id: Int) : Result<RecommendationsData>
+
+    suspend fun fetchReviews(id: Int) : Result<ReviewData>
 }

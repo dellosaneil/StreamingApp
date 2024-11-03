@@ -4,6 +4,7 @@ import com.thelazybattley.common.data.network.response.credits.CreditsDataRespon
 import com.thelazybattley.movies.data.network.response.moviedetails.MovieDetailsDataResponse
 import com.thelazybattley.movies.data.network.response.movies.MoviesDataResponse
 import com.thelazybattley.movies.data.network.response.recommendations.RecommendationsDataResponse
+import com.thelazybattley.movies.data.network.response.reviews.ReviewDataResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -33,5 +34,8 @@ interface MoviesService {
 
     @GET("movie/{id}/recommendations")
     suspend fun getRecommendations(@Path("id") id: Int): RecommendationsDataResponse
+
+    @GET("movie/{id}/reviews")
+    suspend fun getReviews(@Path("id") id: Int): ReviewDataResponse
 
 }

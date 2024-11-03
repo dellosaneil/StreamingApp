@@ -25,12 +25,14 @@ import com.thelazybattley.common.presentation.theme.textStyle
 import com.thelazybattley.movies.R
 import com.thelazybattley.movies.domain.item.recommendations.RecommendationsData
 import com.thelazybattley.movies.domain.item.recommendations.RecommendationsResult
+import com.thelazybattley.movies.domain.item.reviews.ReviewData
 import kotlinx.coroutines.launch
 
 @Composable
 fun MovieDetailsTab(
     modifier: Modifier = Modifier,
     recommendationsData: RecommendationsData?,
+    reviewData: ReviewData?,
     onNavigate: (String) -> Unit
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -103,7 +105,12 @@ fun MovieDetailsTab(
             }
 
             2 -> {
-                Text(text = tabItems[index])
+                if(reviewData != null) {
+                    MovieCommentsTab(
+                        modifier = Modifier,
+                        reviewData = reviewData
+                    )
+                }
             }
         }
     }
@@ -135,7 +142,8 @@ private fun PreviewMovieDetailsTab() {
                         voteAverage = 6.0
                     )
                 )
-            )
+            ),
+            reviewData = null
         ) {
 
         }

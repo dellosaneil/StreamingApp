@@ -212,7 +212,8 @@ fun MovieDetailsScreen(
             modifier = Modifier
                 .fillMaxWidth(),
             recommendationsData = uiState.recommendations,
-            onNavigate = onNavigate
+            onNavigate = onNavigate,
+            reviewData = uiState.reviews
         )
     }
 

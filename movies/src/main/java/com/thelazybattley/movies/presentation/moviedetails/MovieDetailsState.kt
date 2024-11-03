@@ -4,6 +4,7 @@ import com.thelazybattley.common.domain.item.credits.CreditsData
 import com.thelazybattley.common.presentation.base.BaseUiState
 import com.thelazybattley.movies.domain.item.moviedetails.MovieDetailsData
 import com.thelazybattley.movies.domain.item.recommendations.RecommendationsData
+import com.thelazybattley.movies.domain.item.reviews.ReviewData
 
 data class MovieDetailsState(
     val isLoading : Boolean = true,
@@ -11,5 +12,6 @@ data class MovieDetailsState(
     val maxLines: Int = 3,
     val hasTextOverflow: Boolean = false,
     val credits: CreditsData? = null,
-    val recommendations: RecommendationsData? = null
+    val recommendations: RecommendationsData? = null,
+    val reviews: ReviewData? = null
 ) : BaseUiState

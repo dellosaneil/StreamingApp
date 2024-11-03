@@ -7,6 +7,7 @@ import com.thelazybattley.common.presentation.navigation.NavScreens
 import com.thelazybattley.movies.data.network.usecase.FetchMovieCredits
 import com.thelazybattley.movies.data.network.usecase.FetchMovieDetails
 import com.thelazybattley.movies.data.network.usecase.FetchRecommendationsUseCase
+import com.thelazybattley.movies.data.network.usecase.FetchReviews
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,7 +18,8 @@ class MovieDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val fetchMovieDetails: FetchMovieDetails,
     private val fetchMovieCredits: FetchMovieCredits,
-    private val fetchRecommendationsUseCase: FetchRecommendationsUseCase
+    private val fetchRecommendationsUseCase: FetchRecommendationsUseCase,
+    private val fetchReviews: FetchReviews
 
 ) : BaseViewModel<MovieDetailsEvents, MovieDetailsState>(), MovieDetailsCallbacks {
 
@@ -88,7 +90,21 @@ class MovieDetailsViewModel @Inject constructor(
 
                     }
                 )
+        }
+        viewModelScope.launch(context = Dispatchers.IO) {
+            fetchReviews(id = id)
+                .fold(
+                    onSuccess =  { reviews ->
+                        updateState { state ->
+                            state.copy(
+                                reviews = reviews
+                            )
+                        }
+                    },
+                    onFailure = {
 
+                    }
+                )
         }
     }
 

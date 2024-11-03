@@ -6,12 +6,14 @@ import com.thelazybattley.common.domain.usecase.GetImageFromPath
 import com.thelazybattley.movies.data.network.response.moviedetails.toData
 import com.thelazybattley.movies.data.network.response.movies.toData
 import com.thelazybattley.movies.data.network.response.recommendations.toData
+import com.thelazybattley.movies.data.network.response.reviews.toData
 import com.thelazybattley.movies.data.network.service.MoviesService
 import com.thelazybattley.movies.data.repository.MoviesRepository
 import com.thelazybattley.movies.domain.item.moviedetails.MovieDetailsData
 import com.thelazybattley.movies.domain.item.movies.MovieGroupType
 import com.thelazybattley.movies.domain.item.movies.MoviesData
 import com.thelazybattley.movies.domain.item.recommendations.RecommendationsData
+import com.thelazybattley.movies.domain.item.reviews.ReviewData
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(
@@ -106,5 +108,23 @@ class MoviesRepositoryImpl @Inject constructor(
                 }
             RecommendationsData(results = results)
         }
+
+    override suspend fun fetchReviews(id: Int) = runCatching {
+        val response = moviesService.getReviews(id = id)
+
+        ReviewData(
+            id = response.id,
+            results = response.results.map { result ->
+                result.toData()
+                    .copy(
+                        authorDetails = result.authorDetails.copy(
+                            avatarPath = getImageFromPath(result.authorDetails.avatarPath)
+                        ).toData()
+                    )
+            },
+            totalResults = response.id
+        )
+
+    }
 
 }
